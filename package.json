@@ -1,0 +1,15 @@
+{
+  "name": "phuppi-rasheeda",
+  "version": "1.0.0",
+  "description": "A phuppo bot for Izz and Amin",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/amingilani/phuppo-rasheeda"
+  },
+  "author": "Amin Shah Gilani <aminshahgilani@gmail.com>",
+  "license": "MIT"
+}
