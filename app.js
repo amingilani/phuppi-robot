@@ -17,5 +17,5 @@ var amin = new Person({
   bot: bot
 });
 
-
-amin.tell("you're awesome!");
+bot.getUpdates();
+amin.remind("Have you taken your pills?");

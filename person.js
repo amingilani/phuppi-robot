@@ -10,7 +10,8 @@ class Person {
                 chat_id: this.chatId,
                 text: message,
                 reply_markup: {
-                    keyboard: keyboard
+                    keyboard: keyboard,
+                    one_time_keyboard: true
                 }
             })
             .then(json => {
@@ -28,14 +29,13 @@ class Person {
     }
 
     tell(message) {
-        sendMessage(message);
+        this.sendMessage(message);
     }
     remind(message) {
-        sendMessage(message, [{
-            text: '👍'
-        }, {
-            text: '⏰'
-        }]);
+        this.sendMessage(message, [
+            ['👍'],
+            ['⏰']
+        ]);
     }
 }
 
