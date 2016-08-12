@@ -1,3 +1,7 @@
+// scheduler
+var later = require('later');
+later.date.UTC(); // all dates and time are defined in UTC
+
 // load the events
 const event = require('./events');
 
@@ -15,6 +19,7 @@ var izza = new Person({
   bot: bot
 });
 
+
 var amin = new Person({
   name: "Amin",
   chatId: "176255627",
@@ -23,11 +28,19 @@ var amin = new Person({
 
 // the actual app
 
-// var pillsReminder = function (){
-//   amin.remind('hello');
-// }
-//
-// every day at 9pm remind amin and note the last reminder, and incremement by reminder by 1
-//
+var pillsReminderSchedule = later.parse.text('at 5:00pm'); // UTC time
 
-// if amin says "thumbs up"
+var pillsReminders = function() {
+  amin.taskDone = false;
+};
+
+function ifNotDoneRemind(person, message) {
+  if (!person.taskDone && person.counter <= 3) {
+    person.remind(message);
+    person.counter += 1;
+    var s = later.parse.text("ever 1 hour");
+    later.setInterval(ifNotDoneRemind(person, mesa), s);
+  } else {
+    other_person.tell("person.name is an idiot");
+  }
+}
