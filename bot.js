@@ -1,3 +1,5 @@
+const event = require('./events');
+
 const BotFather = require('botfather');
 class MyBot extends BotFather {
 
@@ -58,7 +60,7 @@ class MyBot extends BotFather {
      * @see https://core.telegram.org/bots/api#update
      */
     onReceiveUpdate(update) {
-        console.log(update);
+        event.emit('message', update);
     }
 
 }
