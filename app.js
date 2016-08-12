@@ -1,22 +1,21 @@
-const TOKEN = process.env.TOKEN;
+// setup the bot
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const Bot = require('./bot');
+const bot = new Bot(BOT_TOKEN);
 
-var debugMessage = TOKEN ? TOKEN : "no token found";
+// setup the people
+const Person = require('./person');
+var izza = new Person({
+  name: "Izza",
+  chatId: "186495904",
+  bot: bot
+});
 
-console.log(debugMessage);
+var amin = new Person({
+  name: "Amin",
+  chatId: "176255627",
+  bot: bot
+});
 
-const BotFather = require('botfather');
-const bf = new BotFather(TOKEN);
 
-bf.api('getMe')
-    .then(json => {
-        if (json.ok) {
-            return json.result;
-        }
-        console.error(json.description);
-    })
-    .then(bot => {
-        console.info(`Your bot is @${bot.username}, right? :)`);
-    })
-    .catch(exception => {
-        console.error(exception.stack);
-    });
+amin.tell("you're awesome!");
