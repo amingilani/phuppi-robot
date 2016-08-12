@@ -1,5 +1,5 @@
 {
-  "name": "phuppi-rasheeda",
+  "name": "phuppi-robot",
   "version": "1.0.0",
   "description": "A phuppo bot for Izz and Amin",
   "main": "app.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/amingilani/phuppo-rasheeda"
+    "url": "git@github.com/amingilani/phuppi-robot.git"
   },
   "author": "Amin Shah Gilani <aminshahgilani@gmail.com>",
   "license": "MIT"
