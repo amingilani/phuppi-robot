@@ -28,19 +28,7 @@ var amin = new Person({
 
 // the actual app
 
-var pillsReminderSchedule = later.parse.text('at 5:00pm'); // UTC time
-
-var pillsReminders = function() {
-  amin.taskDone = false;
-};
-
-function ifNotDoneRemind(person, message) {
-  if (!person.taskDone && person.counter <= 3) {
-    person.remind(message);
-    person.counter += 1;
-    var s = later.parse.text("ever 1 hour");
-    later.setInterval(ifNotDoneRemind(person, mesa), s);
-  } else {
-    other_person.tell("person.name is an idiot");
-  }
-}
+amin.remind({
+  message: 'hello',
+  supervisor: amin
+});

@@ -17,7 +17,7 @@ class MyBot extends BotFather {
                 console.error(json.description);
             })
             .then(bot => {
-                console.info(`Your bot is @${bot.username}, right? :)`);
+                console.info(`@${bot.username} online :)`);
             })
             .catch(exception => {
                 console.error(exception.stack);
