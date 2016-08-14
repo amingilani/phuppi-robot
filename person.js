@@ -1,3 +1,5 @@
+"use strict";
+
 class Person {
     constructor(args) {
         this.name = args.name;
