@@ -26,10 +26,12 @@ class MyBot extends BotFather {
             });
     }
 
-    getUpdates(parameters = {
-        limit: 100,
-        timeout: 60 * 2
-    }) {
+    getUpdates(parameters) {
+      var defaultParameters = {
+          limit: 100,
+          timeout: 60 * 2
+      };
+      parameters = typeof parameters !== 'undefined' ? parameters : defaultParameters;
         this.api('getUpdates', parameters)
             .then(json => {
                 if (json.ok) {
