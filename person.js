@@ -12,6 +12,7 @@ class Person {
     reminderDone() {
         this.taskDone = true;
         this.tell('Good baby');
+        this.supervisor.tell(`${this.name} has done their task`);
     }
 
     reminderReset() {
@@ -53,6 +54,7 @@ class Person {
 
     sendReminder(args) {
       var message = args.message;
+      this.supervisor = args.supervisor;
       var maxSnooze = 3;
         if (!this.taskDone && this.taskSnoozeCount < maxSnooze) {
             console.log(`Snooze counter at ${this.taskSnoozeCount}`);
@@ -67,7 +69,7 @@ class Person {
             console.log(`Reminder finished for ${this.name}`);
             console.log(`taskDone is ${this.taskDone}`);
         } else if (this.taskSnoozeCount >= maxSnooze) {
-          args.supervisor.tell(`${this.name} has not responded to "${args.message}" with a yes for ${maxSnooze} hours.`);
+          this.supervisor.tell(`${this.name} has not responded to "${args.message}" with a yes for ${maxSnooze} hours.`);
         }
     }
 
