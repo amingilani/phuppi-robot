@@ -26,6 +26,36 @@ var amin = new Person({
   bot: bot
 });
 
+// upon a successful reply
+event.on('message', update => {
+  // console.log(message);
+  // { update_id: 12514543,
+  // message:
+  //  { message_id: 103,
+  //    from:
+  //     { id: 176255627,
+  //       first_name: 'Amin Shah',
+  //       last_name: 'Gilani',
+  //       username: 'amingilani' },
+  //    chat:
+  //     { id: 176255627,
+  //       first_name: 'Amin Shah',
+  //       last_name: 'Gilani',
+  //       username: 'amingilani',
+  //       type: 'private' },
+  //    date: 1471164157,
+  //    text: 'this is a message' } }
+switch (update.message.chat.id) {
+  case izza.chatId:
+    if (update.message.text === '👍') izza.taskDone();
+    break;
+  case amin.chatId:
+    if (update.message.text === '👍') amin.taskDone();
+    break;
+  default:
+
+}});
+
 // the actual app
 
 amin.remind({

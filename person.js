@@ -3,10 +3,15 @@ class Person {
         this.name = args.name;
         this.chatId = args.chatId;
         this.bot = args.bot;
+        this.taskDone = false;
+        this.taskSnoozeCount = 0;
+        this.taskLastRemind = 0;
+
     }
 
     reminderDone() {
         this.taskDone = true;
+        this.tell('Good baby');
     }
 
     reminderReset() {
@@ -48,8 +53,9 @@ class Person {
 
     sendReminder(args) {
       var message = args.message;
-        if (!this.taskDone && this.taskSnoozeCount < 3) {
-            console.log(`Snooze counter at ${this.taskSnoozeCount}`)
+      var maxSnooze = 3;
+        if (!this.taskDone && this.taskSnoozeCount < maxSnooze) {
+            console.log(`Snooze counter at ${this.taskSnoozeCount}`);
             console.log(`Sending a reminder to ${this.name}`);
             this.sendMessage(message, [
                 ['👍'],
@@ -57,10 +63,11 @@ class Person {
             ]);
             this.reminderIncrement();
             setTimeout(() => this.sendReminder(args), 5000);
-        } else if (this.taskDone === true) {
+        } else if (this.taskDone) {
             console.log(`Reminder finished for ${this.name}`);
-        } else if (this.taskSnoozeCount > 4) {
-          args.supervisor.tell(`$(this.name) has not responded to "${args.message}" for three hours.`);
+            console.log(`taskDone is ${this.taskDone}`);
+        } else if (this.taskSnoozeCount >= maxSnooze) {
+          args.supervisor.tell(`${this.name} has not responded to "${args.message}" with a yes for ${maxSnooze} hours.`);
         }
     }
 
