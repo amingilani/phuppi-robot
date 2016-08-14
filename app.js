@@ -1,3 +1,5 @@
+"use strict";
+
 // scheduler
 var later = require('later');
 later.date.UTC(); // all dates and time are defined in UTC

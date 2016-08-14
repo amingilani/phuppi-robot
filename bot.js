@@ -1,3 +1,5 @@
+"use strict";
+
 const event = require('./events');
 
 const BotFather = require('botfather');
